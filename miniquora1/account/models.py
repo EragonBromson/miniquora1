@@ -13,5 +13,5 @@ class CustomUser(AbstractUser):
     dob = models.DateField(null = True, blank = True)
     phone_number = models.CharField(max_length = 12 , unique = True , default = '')
     class Meta:
-        unique_together = ('email')
+        #unique_together = ('email',)
         verbose_name = 'User'
