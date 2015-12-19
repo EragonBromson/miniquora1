@@ -10,6 +10,7 @@ GENDER_CHOICES = (
 )      #FIELD CHOICES
 class CustomUser(AbstractUser):
     gender = models.CharField(max_length = 2, choices = GENDER_CHOICES , default = GENDER_CHOICES[2][0])
+    profile_pic = models.ImageField(upload_to = 'profile_pics/', blank=True)
     dob = models.DateField(null = True, blank = True)
     phone_number = models.CharField(max_length = 12 , unique = True , default = '')
     class Meta:
