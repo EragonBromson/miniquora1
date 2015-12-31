@@ -1,11 +1,18 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <title>Welcome to MQ1 </title>
+    {% load staticfiles %}
+    {% load material_form %}
+    <head>
+        <title> {% block pagetitle %} Welcome to MQ1 {% endblock %} </title>
+        <link rel="stylesheet" href = "{% static 'account/css/base.css' %}">
+        {%include 'material/includes/material_css.html' %}
 </head>
 <body>
     <div id="baseContainer">
-        Base.html called.
+        <div class="card">
+            <h4>Login</h4>
+            Base.html called.
+        </div>
     </div>
 </body>
 </html>
