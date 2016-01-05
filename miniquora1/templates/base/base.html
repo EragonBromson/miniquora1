@@ -11,6 +11,11 @@
     <div id="baseContainer">
         <div class="card">
             <h4>Login</h4>
+            <form action = " {% url 'login' %}" method='post'>
+                {% csrf_token %}
+                {% form form=form %}{% endform %}
+                <button type="submit" name="login" class="btn waves-effect waves-light left">Log In</button>
+            </form>
             Base.html called.
         </div>
     </div>
