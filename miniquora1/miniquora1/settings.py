@@ -116,3 +116,7 @@ AUTH_USER_MODEL = 'account.CustomUser'
 #Specifying base folder for user uploaded media content
 MEDIA_ROOT = os.path.join(BASE_DIR,'media')
 MEDIA_URL = '/media/'
+
+LOGIN_URL = 'base'
+LOGOUT_URL = 'logout'
+LOGIN_REDIRECT_URL = 'secret'
