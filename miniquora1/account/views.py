@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_exempt
 from django.core.exceptions import SuspiciousOperation
-from django.views.decorators.http import require_http_methods, require_GET, require_POST
+from django.views.decorators.http import require_GET, require_POST
 from .forms import LoginForm
 
 # Create your views here.
@@ -11,8 +11,7 @@ from .forms import LoginForm
 @require_GET
 def base(request):
     if(request.user.is_authenticated()):
-        #return redirect('secret')
-        return HttpResponse('ooh')
+        return redirect('secret')
     f=LoginForm(initial = { 'username' : 'admin' })
     #THIS IS AN UNBOUNDED FORM WHICH WILL BE RENDERED ON BASE
     context = { 'form' : f }
