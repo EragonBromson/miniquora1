@@ -4,7 +4,9 @@ from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_exempt
 from django.core.exceptions import SuspiciousOperation
 from django.views.decorators.http import require_GET, require_POST
+from django.contrib.auth import login as auth_login, logout as auth_logout
 from .forms import LoginForm
+from .models import CustomUser
 
 # Create your views here.
 
@@ -23,6 +25,8 @@ def login(request):
         return redirect('secret')
     f = LoginForm(request.POST)
     if f.is_valid():
+        user = f.get_user();
+        auth_login(request, user)
         return redirect('secret')
     else:
         return render(request,'base/base.html',{ 'form' : f })
