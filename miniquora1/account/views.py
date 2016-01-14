@@ -14,7 +14,7 @@ from .models import CustomUser
 def base(request):
     if(request.user.is_authenticated()):
         return redirect('secret')
-    f=LoginForm(initial = { 'username' : 'admin' })
+    f=LoginForm(initial = { })
     #THIS IS AN UNBOUNDED FORM WHICH WILL BE RENDERED ON BASE
     context = { 'form' : f }
     return render(request,'base/base.html',context)
