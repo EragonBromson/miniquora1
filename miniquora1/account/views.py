@@ -35,3 +35,8 @@ def login(request):
 @login_required
 def secret(request):
     return HttpResponse('User logged in')
+
+@require_GET
+def logout(request):
+    auth_logout(request)
+    return redirect('base')
