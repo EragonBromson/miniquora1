@@ -3,40 +3,33 @@ from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_exempt
 from django.core.exceptions import SuspiciousOperation
-from django.views.decorators.http import require_GET, require_POST
+from django.views.decorators.http import require_GET, require_POST, require_http_methods
 from django.contrib.auth import login as auth_login, logout as auth_logout
 from .forms import LoginForm
 from .models import CustomUser
 
 # Create your views here.
 
-@require_GET
+@require_http_methods(['GET','POST'])
 def base(request):
     if(request.user.is_authenticated()):
-        return redirect('secret')
-    f=LoginForm(initial = { })
-    #THIS IS AN UNBOUNDED FORM WHICH WILL BE RENDERED ON BASE
-    context = { 'form' : f }
-    return render(request,'base/base.html',context)
-
-@require_POST
-def login(request):
-    if(request.user.is_authenticated()):
-        return redirect('secret')
-    f = LoginForm(request.POST)
-    if f.is_valid():
-        user = f.get_user();
-        auth_login(request, user)
-        return redirect('secret')
+        return redirect('home')
+    if request.method == 'GET':
+        f=LoginForm()
     else:
-        return render(request,'base/base.html',{ 'form' : f })
-
-@require_GET
-@login_required
-def secret(request):
-    return HttpResponse('User logged in')
+        f = LoginForm(request.POST)
+        if f.is_valid():
+            user = f.get_user();
+            auth_login(request, user)
+            return redirect('home')
+    return render(request,'authentication/login.html',{ 'form' : f })
 
 @require_GET
 def logout(request):
     auth_logout(request)
     return redirect('base')
+
+@require_GET
+@login_required
+def home(request):
+    return render(request , 'base/loggedin.html')
