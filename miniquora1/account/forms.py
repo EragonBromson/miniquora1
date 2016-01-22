@@ -1,5 +1,6 @@
 from django import forms
 from django.contrib.auth import authenticate
+from .models import CustomUser
 
 class LoginForm(forms.Form):
     username = forms.CharField(max_length = 20)
@@ -25,3 +26,23 @@ class LoginForm(forms.Form):
 #is_active tells us that whether the user is Signed Up or not.
 # If no ValidationError is raised, the method should return the cleaned (normalized) data as a Python object.
 #__init__ is the initialiser
+
+class SignUpForm(forms.ModelForm):
+    password1 = forms.CharField(label = 'Password' , widget = forms.PasswordInput)
+    password2 = forms.CharField(label = 'Confirm Password', widget = forms.PasswordInput , help_text = 'Should be same as password')
+    def clean_password2(self):
+        data_password1 = self.cleaned_data['password1']
+        data_password2 = self.cleaned_data['password2']
+        if data_password1 and data_password2 and data_password1!= data_password2:
+            return forms.ValidationError("Passwords dont match.")
+        return data_password2
+    def save(self, commit = True):
+        user = super(SignUpForm, self).save(commit = False)
+        user.set_password(self.cleaned_data.get('password1'))
+        user.is_active = False
+        if commit:
+            user.save()
+        return user
+    class Meta:
+        model = CustomUser
+        fields = ['username' , 'phone_number' , 'email' ]

@@ -1,0 +1,17 @@
+{% extends 'base/base.html' %}
+{% load material_form %}
+{% block pagetitle %} MiniQUora1|SignUp {% endblock %}
+{% block content %}
+<div class='row'>
+    <div class= 'card-panel'>
+        <h4>SignUp</h4>
+        <form action = "{% url 'signup' %}" method = 'post'>
+            {% csrf_token %}
+            {% form form=form %}{% endform %}
+            <button class="btn waves-effect waves-light" type="submit" name="signup"> SignUp 
+                <i class="fa fa-arrow-circle-right"></i>
+            </button>
+        </form>
+    </div>
+</div>
+{% endblock %}

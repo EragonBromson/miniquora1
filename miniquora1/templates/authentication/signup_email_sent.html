@@ -1,0 +1,10 @@
+{% extends 'base/base.html' %}
+{% load material_form %}
+{% block pagetitle %} MiniQuora1| SignUp Email Sent {% endblock %}
+{% block content %}
+<div class='row'>
+    <div class='col s12'>
+        Thanks for signing up. We have sent a confirmation link to your mail id: {{ email }}.Please click on the link to complete the signup process.
+    </div>
+</div>
+{% endblock %}
