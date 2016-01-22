@@ -33,8 +33,8 @@ class SignUpForm(forms.ModelForm):
     def clean_password2(self):
         data_password1 = self.cleaned_data['password1']
         data_password2 = self.cleaned_data['password2']
-        if data_password1 and data_password2 and data_password1!= data_password2:
-            return forms.ValidationError("Passwords dont match.")
+        if data_password1 and data_password2 and data_password1 != data_password2:
+            raise forms.ValidationError("Passwords dont match.")
         return data_password2
     def save(self, commit = True):
         user = super(SignUpForm, self).save(commit = False)
