@@ -2,20 +2,28 @@
 {% load material_form %}
 {% block pagetitle %} MiniQuora1| Login {% endblock %}
 {% block content %}
-<div class="row">
+<div class="row" >
     <div class="col s12 m4 offset-m4">
         <div class="card-panel">
             <div class="input-field">
-                <h4>Login</h4>
+                <blockquote>
+                    <h4 style='color:#f57c00'>Login</h4>
+                </blockquote>
                 <form action = " {% url 'base' %}" method='post'>
                     {% csrf_token %}
                     {% form form=form %}{% endform %}
-                    <button type="submit" name="login" class="btn waves-effect waves-light left">Log In</button>
+                    <div class = 'center-btn'>
+                        <button type="submit" name="login" class="waves-effect waves-light btn">
+                            Log In
+                            <i class="mdi-content-send right"></i>
+                        </button>
+                    </div>
                 </form>
             </div>
             <div class = 'row'>
                 <div class="col s12 m4 offset-m4">
-                    <a href = '{% url 'signup' %}'>Create Account</a>
+                    <br>
+                    <a class="center-align" href = '{% url 'signup' %}'>Create Account</a>
                 </div>
             </div>
         </div>

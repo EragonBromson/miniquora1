@@ -4,9 +4,9 @@
     {% load material_form %}
     <head>
         <title> {% block pagetitle %} Welcome to MQ1 {% endblock %} </title>
-        <link rel="stylesheet" href = "{% static 'account/css/base.css' %}">
         <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
         {%include 'material/includes/material_css.html' %}
+        <link rel="stylesheet" href = "{% static 'account/css/base.css' %}">
         {% block extrahead %}{% endblock %}
 </head>
 <body>

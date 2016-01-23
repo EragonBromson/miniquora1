@@ -4,7 +4,9 @@
 {% block content %}
 <div class='row'>
     <div class= 'card-panel'>
-        <h4>SignUp</h4>
+        <blockquote>
+            <h4>SignUp</h4>
+        </blockquote>
         <form action = "{% url 'signup' %}" method = 'post'>
             {% csrf_token %}
             {% form form=form %}{% endform %}
