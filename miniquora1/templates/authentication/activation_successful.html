@@ -1,0 +1,10 @@
+{% extends 'base/base.html' %}
+{% block pagetitle %} MiniQuora1|Activation Successfull {% endblock %}
+{% block content %}
+<div class='row'>
+    <div class='col s12'>
+        <h3>Account verified.</h3>
+        <p>You can now proceed to <a href = "{% url 'base' %}">login</a>.</p>
+    </div>
+</div>
+{% endblock %}

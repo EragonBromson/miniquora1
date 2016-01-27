@@ -121,3 +121,11 @@ MEDIA_URL = '/media/'
 LOGIN_URL = 'base'
 LOGOUT_URL = 'logout'
 LOGIN_REDIRECT_URL = 'home'
+
+DEFAULT_FROM_EMAIL = 'sarthak.agrawal76@gmail.com'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST_USER = 'sarthak'
+EMAIL_HOST_PASSWORD = 'ovyzdkbenaahkfjp'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
