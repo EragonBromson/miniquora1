@@ -77,6 +77,6 @@ def activate(request , uid = None,  token = None):
     if user.username == username_from_token : 
         user.is_active = True
         user.save()
-        return render('authentication/activation_successful.html')
+        return render(request,'authentication/activation_successful.html')
     else:
         return render('authentication/activation_failure.html')
