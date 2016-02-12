@@ -46,3 +46,21 @@ class SignUpForm(forms.ModelForm):
     class Meta:
         model = CustomUser
         fields = ['username' , 'phone_number' , 'email' ]
+
+class ForgotPasswordForm(forms.Form):
+    email = forms.EmailField()
+    def clean_email(self):
+        data_email = self.cleaned_data.get('email')
+        if data_email and CustomUser.objects.filter(email = data_email).count() == 0:
+            raise forms.ValidationError("We cannot find a user with this email address. Please verify the email address and try again.")
+        return data_email
+
+class resetPasswordForm(forms.Form):
+    password1 = forms.CharField(label = 'Password' , widget = forms.PasswordInput)
+    password2 = forms.CharField(label = 'Confirm Password', widget = forms.PasswordInput , help_text = 'Should be same as password')
+    def clean_password2(self):
+        data_password1 = self.cleaned_data['password1']
+        data_password2 = self.cleaned_data['password2']
+        if data_password1 and data_password2 and data_password1 != data_password2:
+            raise forms.ValidationError("Passwords dont match.")
+        return data_password2

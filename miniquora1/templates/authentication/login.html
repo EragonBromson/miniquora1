@@ -2,7 +2,7 @@
 {% load material_form %}
 {% block pagetitle %} MiniQuora1| Login {% endblock %}
 {% block content %}
-<div class="row" >
+<div class="row" id='mainLoginBox' >
     <div class="col s12 m4 offset-m4">
         <div class="card-panel">
             <div class="input-field">
@@ -21,9 +21,13 @@
                 </form>
             </div>
             <div class = 'row'>
-                <div class="col s12 m4 offset-m4">
+                <div class="col s12 m1">
                     <br>
                     <a class="center-align" href = '{% url 'signup' %}'>Create Account</a>
+                </div>
+                <div class="col s12 m1 offset-m8">
+                    <br>
+                    <a class="center-align" href = '{% url 'forgot_password' %}'>Forgot Password?</a>
                 </div>
             </div>
         </div>
