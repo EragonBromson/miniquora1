@@ -1,9 +1,10 @@
 body {
+    background-image: url(../images/back.jpg);
     background-color: red;
 }
 
 .center-btn {
-    text-align: center 
+    text-align: center
 }
 .card-panel {
     padding: 20px;
